@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<h2> My account: <a th:href="@{/client/{id}(id=${client.getClient().getId()})}"  th:text="${client.getUsername()}">My account</a></h2>
+<h3><a th:href="@{/book/all}">All books</a></h3>
+<h3><a th:href="@{/author/all}">All authors</a></h3>
+<h2> Sorry, this book is over</h2>
+</body>
+</html>

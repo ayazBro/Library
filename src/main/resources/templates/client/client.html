@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info about client</title>
+</head>
+<body>
+<h3><a th:href="@{/logout}">Out</a></h3>
+<h3><a th:href="@{/author/all/0}">All authors</a></h3>
+<h3><a th:href="@{/book/all/0}">All books</a></h3>
+<h1>Информаиця о пользователе</h1>
+<h2>Name: <a th:text="${client.getName()}">client</a> </h2>
+<h2> Password: <a th:if="${realClient.getClient().getRole() == 'ROLE_ADMIN' or realClient.getClient().getId() == client.getId()}" th:text="${client.getPassword()}">client</a> </h2>
+<h2> Phone number: <a th:text="${client.getPhone()}">client</a> </h2>
+<h2> Photo:</h2>
+<img th:src="${client.getImageUrl()}" width="350" height="450">
+<h2> Clients orders:</h2>
+<div  th:each="book : ${client.getBooks}">
+    <h1><a th:href="@{/book/{id}(id=${book.getId()})}"
+           th:text="${book.getName()}">user</a> <a th:if="${realClient.getClient().getId() == client.getId()}" th:href="@{/book/return/{id}(id=${book.getId()})}">return</a></h1>
+</div>
+
+<br>
+<a th:if="${realClient.getClient().getRole() == 'ROLE_ADMIN'}" th:href="@{/client/delete/{id}(id=${client.getId()})}">Delete</a>
+<br>
+<a th:if="${realClient.getClient().getRole() == 'ROLE_ADMIN' or realClient.getClient().getId() == client.getId()}" th:href="@{/client/update/{id}(id=${client.getId()})}">Update information</a>
+</body>
+</html>
+

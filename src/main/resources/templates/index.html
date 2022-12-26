@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Our library</title>
+</head>
+<body>
+
+<div sec:authorize="!isAuthenticated()">
+    <h2><a  th:href="@{/login}"> Sign in</a> </h2>
+</div>
+<h2> <a th:href="@{/book/all/0}">All books</a></h2>
+<h2> <a th:href="@{/author/all/0}">All authors</a></h2>
+<div sec:authorize="!isAuthenticated()">
+    <h2> <a th:href="@{/client/new}">Registration</a></h2>
+</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+    <h2> <a th:href="@{/client/all}">All clients</a></h2>
+</div>
+
+<h1>Welcome to our library</h1>
+</body>
+</html>

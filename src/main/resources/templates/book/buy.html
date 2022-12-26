@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy</title>
+</head>
+<body>
+<h2> My account: <a th:href="@{/client/{id}(id=${client.getClient().getId()})}"  th:text="${client.getUsername()}">My account</a></h2>
+<h3><a th:href="@{/book/all}">All books</a></h3>
+<h3><a th:href="@{/author/all}">All authors</a></h3>
+<h2> Thank you for order!!!</h2>
+<h3> You bought a book:
+    <a th:href="@{/book/{id}(id=${book.getId()})}"
+       th:text="${book.getName()}"> </a> by
+    <a th:href="@{/author/{id}(id=${book.getAuthor().getId()})}"
+       th:text="${book.getAuthor().getName() + ' ' +book.getAuthor().getSurname()}">user</a>
+</h3>
+</body>
+</html>

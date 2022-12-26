@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+<body>
+<h3><a th:href="@{/logout}">Out</a></h3>
+<h3><a th:href="@{/author/all/0}">All authors</a></h3>
+<h1>Информаиця о книге</h1>
+<h2>Name: <a th:text="${book.getName()}">user</a> </h2>
+<h2> Year: <a th:text="${book.getYear()}">user</a> </h2>
+<h2> Photo:</h2>
+<img th:src="${book.getImageUrl()}" width="350" height="450">
+<h2> Author:
+    <a th:href="@{/author/{id}(id=${book.getAuthor().getId()})}"
+       th:text="${book.getAuthor().getName() + ' ' +book.getAuthor().getSurname()}">user</a>
+</h2>
+<h2> <a th:href="@{/book/buy/{id}(id=${book.getId()})}">Buy</a></h2>
+<br>
+<a th:if="${client.getClient().getRole() == 'ROLE_ADMIN'}" th:href="@{/book/delete/{id}(id=${book.getId()})}">Delete</a>
+<br>
+<a th:if="${client.getClient().getRole() == 'ROLE_ADMIN'}" th:href="@{/book/update/{id}(id=${book.getId()})}">Update book</a>
+</div>
+</body>
+</html>

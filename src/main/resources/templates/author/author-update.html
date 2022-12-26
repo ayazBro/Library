@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update author</title>
+</head>
+<body>
+<form action="#" th:action="@{/author/updateAuthor/{id}(id=${author.getId()})}" th:object="${author}" method="post">
+  <label for="Name">Name</label>
+  <input type="text" th:field="*{name}" id="Name" placeholder="Name">
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error </div>
+    <br>
+  <label for="Surname">Surname</label>
+  <input type="text" th:field="*{surname}" id="Surname" placeholder="Surname">
+    <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">name error </div>
+    <br>
+  <label for="Url">picture URL </label>
+  <input type="text" th:field="*{imageUrl}" id="Url" placeholder="URL">
+    <div style="color:red" th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}">name error </div>
+    <br>
+  <input type="submit" value="Update author">
+</form>
+</body>
+</html>

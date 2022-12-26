@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update book</title>
+</head>
+<body>
+<form action="#" th:action="@{/book/updateBook/{id}(id=${book.getId()})}" th:object="${book}" method="post">
+    <label for="Name">Name</label>
+    <input type="text" th:field="*{name}" id="Name" placeholder="Name">
+    <label for="Year">Year</label>
+    <input type="text" th:field="*{year}" id="Year" placeholder="Data">
+
+    <label for="author">Choose author: </label>
+    <select th:object="${book}" th:field="*{author}" id="author">
+        <option th:each="author:${authors}" th:value="${author.getId()}"
+                th:text="${author.getName()+' '+author.getSurname()}"> </option>
+    </select>
+
+    <label for="Url">picture URL </label>
+    <input type="text" th:field="*{imageUrl}" id="Url" placeholder="URL">
+    <input type="submit" value="Update book">
+</form>
+</body>
+</html>

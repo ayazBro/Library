@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3><a th:href="@{/logout}">Out</a></h3>
+<h3><a th:href="@{/author/all/0}">All authors</a></h3>
+<h3>My account: <a th:href="@{/client/{id}(id=${client.getClient().getId()})}"  th:text="${client.getUsername()}">My account</a></h3>
+<h3><a th:if="${client.getClient().getRole() == 'ROLE_ADMIN'}" th:href="@{/book/new}" >Create new book</a> </h3>
+
+
+<div th:each="book : ${books}" >
+    <a th:href="@{/book/{id}(id=${book.getId()})}"
+       th:text="${book.getName()}">user</a>
+    <br>
+    <img th:src="${book.getImageUrl()}" width="350" height="450">
+</div>
+<a th:if="${id!=0}" th:href="@{/book/all/{id}(id=${id-1})}" > Previous page</a>
+<a th:if="${kol/5 != id}" th:href="@{/book/all/{id}(id=${id+1})}" >Next page</a>
+</body>
+</html>

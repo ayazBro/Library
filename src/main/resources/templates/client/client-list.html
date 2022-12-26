@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All clients</title>
+</head>
+<body>
+
+<h2><a th:href="@{/logout}"> Go out</a></h2>
+<h3><a th:href="@{/author/all/0}">All authors</a></h3>
+<h3><a th:href="@{/book/all/0}">All books</a></h3>
+<h2> My account: <a th:href="@{/client/{id}(id=${realClient.getClient().getId()})}"  th:text="${realClient.getUsername()}">My account</a></h2>
+<div th:each="client : ${clients}">
+    <a th:href="@{/client/{id}(id=${client.getId()})}"
+       th:text="${client.getName()}">user</a>
+    <br>
+    <img th:src="${client.getImageUrl()}" width="350" height="450">
+</div>
+</body>
+</html>

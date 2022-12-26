@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update client</title>
+</head>
+<body>
+<form action="#" th:action="@{/client/updateClient/{id}(id=${client.getId()})}" th:object="${client}" method="post">
+  <label for="Name">Name</label>
+  <input type="text" th:field="*{name}" id="Name" placeholder="Name">
+  <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name error </div>
+  <br>
+  <label for="Password">Password</label>
+  <input type="text" th:field="*{password}" id="Password" placeholder="Password">
+  <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">name error </div>
+  <br>
+  <label for="Phone">Phone number </label>
+  <input type="text" th:field="*{phone}" id="Phone" placeholder="phone">
+  <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">name error </div>
+  <br>
+  <label for="Url">picture URL </label>
+  <input type="text" th:field="*{imageUrl}" id="Url" placeholder="URL">
+  <div style="color:red" th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}">name error </div>
+  <br>
+  <input type="submit" value="Update client">
+</form>
+</body>
+</html>

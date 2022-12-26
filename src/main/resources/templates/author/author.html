@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Author</title>
+</head>
+<body>
+<h3><a th:href="@{/author/all/0}">All authors</a></h3>
+<h1>Информаиця об авторе</h1>
+<h2>Name: <a th:text="${author.getName()}">user</a> </h2>
+<h2> Surname: <a th:text="${author.getSurname()}">user</a> </h2>
+<h2> Photo:</h2>
+<img th:src="${author.getImageUrl()}" width="350" height="400">
+<h2> Author's work</h2>
+<div th:each="book : ${author.getBooks}">
+        <h1><a th:href="@{/book/{id}(id=${book.getId()})}"
+               th:text="${book.getName()}">user</a></h1>
+</div>
+<h3><a th:if="${#lists.isEmpty(author.getBooks)}">Our library hasn't any works of this author</a></h3>
+
+<h3><a th:if="${client.getClient().getRole() == 'ROLE_ADMIN'}" th:href="@{/author/delete/{id}(id=${author.getId()})}">Delete</a></h3>
+
+<h3><a th:if="${client.getClient().getRole() == 'ROLE_ADMIN'}" th:href="@{/author/update/{id}(id=${author.getId()})}">Update author</a></h3>
+</body>
+</html>

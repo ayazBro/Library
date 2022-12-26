@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All books</title>
+</head>
+<body>
+
+<h3><a th:href="@{/logout}">Out</a></h3>
+<h3><a th:href="@{/author/all/0}">All authors</a></h3>
+<h3>My account: <a th:href="@{/client/{id}(id=${client.getClient().getId()})}"  th:text="${client.getUsername()}">My account</a></h3>
+<h3><a th:if="${client.getClient().getRole() == 'ROLE_ADMIN'}" th:href="@{/book/new}" >Create new book</a> </h3>
+
+
+<div th:each="book : ${books}" >
+    <a th:href="@{/book/{id}(id=${book.getId()})}"
+       th:text="${book.getName()}">user</a>
+    <br>
+    <img th:src="${book.getImageUrl()}" width="350" height="450">
+</div>
+</body>
+</html>
