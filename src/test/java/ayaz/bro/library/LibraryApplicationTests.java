@@ -33,6 +33,13 @@ class LibraryApplicationTests {
 				.andExpect(status().is3xxRedirection())
 				.andExpect(redirectedUrl("http://localhost/login"));
 	}
+//	@Test
+//	public void correctLoginTest() throws Exception{
+//		this.mockMvc.perform(SecurityMockMvcRequestBuilders.formLogin().user("zarik02789@gmail.com").password("r322z756k"))
+//				.andDo(print())
+//				.andExpect(status().is3xxRedirection())
+//				.andExpect(redirectedUrl("/"));
+//	}
 
 
 }
