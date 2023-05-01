@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -32,6 +33,13 @@ class LibraryApplicationTests {
 				.andDo(print())
 				.andExpect(status().is3xxRedirection())
 				.andExpect(redirectedUrl("http://localhost/login"));
+	}
+	@Test
+	public void badData() throws Exception
+	{
+		this.mockMvc.perform(post("/login").param("user", "Alfred"))
+				.andDo(print())
+				.andExpect(status().isForbidden());
 	}
 //	@Test
 //	public void correctLoginTest() throws Exception{
