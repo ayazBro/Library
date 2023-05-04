@@ -3,10 +3,12 @@ package ayaz.bro.library.services;
 import ayaz.bro.library.models.Author;
 import ayaz.bro.library.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class AuthorService {
@@ -19,7 +21,13 @@ public class AuthorService {
     public List<Author> all() {
         return authorRepository.findAll();
     }
-    public Author findById(int id) {
+    @Cacheable("authors")
+    public Author findById(int id)  {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return authorRepository.findById(id).get();
     }
     public void deleteById(int id) {
