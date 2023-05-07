@@ -25,7 +25,7 @@ class LibraryApplicationTests {
 		this.mockMvc.perform(get("/"))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().string(containsString("Welcome to our library")));
+				.andExpect(content().string(containsString("Научная библиотека им. Н.И. Лобачевского")));
 	}
 	@Test
 	public void loginTest() throws Exception{

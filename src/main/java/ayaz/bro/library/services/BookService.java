@@ -33,6 +33,9 @@ public class BookService {
     public List<Book> allByPage(int num) {
         return bookRepository.findAll(PageRequest.of(num,5)).getContent();
     }
+    public Book findByName(String name) {
+        return bookRepository.findByName(name);
+    }
     @Transactional
     public void takeBook(int id) throws Exception {
        Book book= bookRepository.findById(id).get();

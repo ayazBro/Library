@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -31,9 +34,17 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public String showClient(@PathVariable("id") Integer id, Model model){
+    public String showClient(@PathVariable("id") Integer id, Model model, HttpServletRequest request, HttpServletResponse response){
+        HttpSession session = request.getSession();
+        Integer counter = (Integer) session.getAttribute("count");
+        if(counter==null)
+            session.setAttribute("count", 1);
+        else {
+            session.setAttribute("count", counter + 1);
+        }
         Client client = clientService.findById(id);
         model.addAttribute("client", client);
+        model.addAttribute("count", counter);
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
         ClientDetails clientDetails=(ClientDetails) authentication.getPrincipal();
         model.addAttribute("realClient",clientDetails);

@@ -38,6 +38,16 @@ public class BookController {
         return "book/book-list";
     }
 
+    @GetMapping("/search")
+    public String showSearchBook( @RequestParam("name") String name, Model model) {
+        Book book=bookService.findByName(name);
+        model.addAttribute("book", book);
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+        ClientDetails clientDetails=(ClientDetails) authentication.getPrincipal();
+        model.addAttribute("client",clientDetails);
+        return "book/search";
+    }
+
     @GetMapping("/all/{id}")
     public String showBookPage(@PathVariable("id") int id, Model model) {
         model.addAttribute("id",id);

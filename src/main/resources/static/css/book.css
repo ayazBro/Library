@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap');
+
+body {
+   width: 100%;
+   height: 100vh;
+   background-image: url('/photo/background.png');
+   font-size: 18px;
+   background-repeat: no-repeat;
+   font-family: 'Poppins', sans-serif;
+   background-size: 100%;
+   background-attachment: fixed;
+   overflow-y: scroll;
+   display: flex;
+   flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.header {
+    width: 80%;
+    height: 20vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_LeftSide{
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.LeftSide_SiteName{
+    height: auto;
+    width: auto;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.LeftSide_LogoSvg{
+    margin-right: 20px;
+    height: 80px;
+    width: 80px;
+}
+
+.header_RightSide{
+    width: 60%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.RightSide_Item{
+    width: auto;
+    height: auto;
+    transition: all 1s;
+    padding: 8px;
+    border: solid 2px white;
+    border-radius: 3px;
+    text-decoration: none;
+    color: white;
+}
+
+.RightSide_Item:hover{
+    transition: all 1s;
+    border: solid 2px #1E90FF;
+    border-radius: 5px;
+    color: #1E90FF;
+}
+
+.main{
+    width: 80%;
+    height: 60vh;
+    display: flex;
+    margin: auto;
+    background-color: #002137;
+}
+
+.main_leftBlock{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.leftBlock_MainText{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.leftBlock_UserData{
+    font-size: 22px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-around;
+    color: white;
+}
+
+.UserData_current{
+    color: #1E90FF;
+    font-weight: bold;
+}
+
+.main_rightBlock{
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+
+.rightBlock_img{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    margin: auto;
+}
